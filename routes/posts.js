@@ -1,16 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/all', (req, res) => {
-  res.send('Sending all posts!');
-});
+const { getAllPosts, getUsersPosts, createNewPost } = require("../queries/posts.js");
 
-router.get('/:user_id', (req, res) => {
-  res.send('Sending all post from this user!');
-});
+router.get('/all', getAllPosts);
 
-router.post('/register', (req, res) => {
-  res.send('Creating new post!');
-});
+router.get('/:user_id', getUsersPosts);
+
+router.post('/register', createNewPost);
 
 module.exports = router;
